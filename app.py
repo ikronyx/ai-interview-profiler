@@ -14,9 +14,10 @@ if uploaded_file:
     save_path = os.path.join("/tmp", uploaded_file.name)
     with open(save_path, "wb") as f:
         f.write(uploaded_file.read())
+        print(f"[DEBUG] File saved at: {save_path}")
 
     print(f"[DEBUG] File saved at: {save_path}")
-    
+
     # with st.spinner("Transcribing..."):
     #     transcript = transcribe_audio(fixed_path)
     #     st.markdown("### 📝 Transcript")

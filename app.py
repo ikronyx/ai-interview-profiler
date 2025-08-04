@@ -10,6 +10,7 @@ st.title("🎤 AI Interview Skill Profiler")
 uploaded_file = st.file_uploader("Upload a 1–2 min voice response v1", type=["wav", "mp3"])
 
 if uploaded_file:
+    print("test")
 
     save_path = os.path.join("/tmp", uploaded_file.name)
     with open(save_path, "wb") as f:

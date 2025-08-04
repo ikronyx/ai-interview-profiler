@@ -14,14 +14,13 @@ if uploaded_file:
     st.success(f"File saved to: {save_path}")
     print(f"[DEBUG] File saved at: {save_path}")
 
-    # fixed_path = "/tmp/audio.wav"
-    # with open(fixed_path, "wb") as f:
-    #     f.write(uploaded_file.read())
+    with open(save_path, "wb") as f:
+        f.write(uploaded_file.read())
 
-    # with st.spinner("Transcribing..."):
-    #     transcript = transcribe_audio(fixed_path)
-    #     st.markdown("### 📝 Transcript")
-    #     st.write(transcript)
+    with st.spinner("Transcribing..."):
+        transcript = transcribe_audio(save_path)
+        st.markdown("### 📝 Transcript")
+        st.write(transcript)
 
     # filler_count = count_fillers(transcript)
     # avg_len = avg_sentence_length(transcript)

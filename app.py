@@ -11,23 +11,25 @@ uploaded_file = st.file_uploader("Upload a 1–2 min voice response v1", type=["
 
 if uploaded_file:
 
-    fixed_path = "/tmp/audio.wav"
-    with open(fixed_path, "wb") as f:
+    save_path = os.path.join("/tmp", uploaded_file.name)
+    with open(save_path, "wb") as f:
         f.write(uploaded_file.read())
 
-    with st.spinner("Transcribing..."):
-        transcript = transcribe_audio(fixed_path)
-        st.markdown("### 📝 Transcript")
-        st.write(transcript)
+    print(f"[DEBUG] File saved at: {save_path}")
+    
+    # with st.spinner("Transcribing..."):
+    #     transcript = transcribe_audio(fixed_path)
+    #     st.markdown("### 📝 Transcript")
+    #     st.write(transcript)
 
-    filler_count = count_fillers(transcript)
-    avg_len = avg_sentence_length(transcript)
-    clarity = grammar_score(transcript)
+    # filler_count = count_fillers(transcript)
+    # avg_len = avg_sentence_length(transcript)
+    # clarity = grammar_score(transcript)
 
-    st.markdown("### 📊 Analysis")
-    st.write(f"**Filler Words**: {filler_count}")
-    st.write(f"**Avg. Sentence Length**: {avg_len} words")
-    st.write(f"**Grammar Clarity Score**: {clarity}/100")
+    # st.markdown("### 📊 Analysis")
+    # st.write(f"**Filler Words**: {filler_count}")
+    # st.write(f"**Avg. Sentence Length**: {avg_len} words")
+    # st.write(f"**Grammar Clarity Score**: {clarity}/100")
 
-    st.markdown("### 💡 Feedback")
-    st.info(generate_feedback(filler_count, avg_len, clarity))
+    # st.markdown("### 💡 Feedback")
+    # st.info(generate_feedback(filler_count, avg_len, clarity))
